@@ -285,12 +285,12 @@ section h2 {
 
 /* Añadir estilo a las imágenes dentro de los Work Samples */
 .work-card img {
-  width: 100%; /* Hace que las imágenes se ajusten al ancho del contenedor */
-  height: auto; /* Mantiene la proporción de las imágenes */
-  border-radius: 8px; /* Esquinas redondeadas */
-  object-fit: cover; /* Asegura que las imágenes se ajusten bien sin perder proporción */
-  max-height: 200px; /* Limita la altura máxima para que no se desborden */
-  margin-bottom: 1rem; /* Un pequeño espacio debajo de las imágenes */
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  object-fit: cover;
+  max-height: 200px;
+  margin-bottom: 1rem;
 }
 
 /* Resume Section */
