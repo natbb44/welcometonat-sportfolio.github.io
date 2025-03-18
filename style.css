@@ -283,6 +283,16 @@ section h2 {
   line-height: 1.6;
 }
 
+/* Añadir estilo a las imágenes dentro de los Work Samples */
+.work-card img {
+  width: 100%; /* Hace que las imágenes se ajusten al ancho del contenedor */
+  height: auto; /* Mantiene la proporción de las imágenes */
+  border-radius: 8px; /* Esquinas redondeadas */
+  object-fit: cover; /* Asegura que las imágenes se ajusten bien sin perder proporción */
+  max-height: 200px; /* Limita la altura máxima para que no se desborden */
+  margin-bottom: 1rem; /* Un pequeño espacio debajo de las imágenes */
+}
+
 /* Resume Section */
 #resume {
   background-color: #222;
