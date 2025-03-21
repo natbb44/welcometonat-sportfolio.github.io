@@ -1,372 +1,204 @@
-:root {
-  --bg-color: #000000;           /* Black background */
-  --text-color: #ffffff;         /* White text */
-  --accent-pink: #D8A7B1;        /* Demure pink accent */
-  --accent-purple: #A18AA6;      /* Demure purple accent */
-  --primary-font: 'Helvetica', 'Arial', sans-serif;
-}
-/* Reset */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-body {
-  background-color: var(--bg-color);
-  color: var(--text-color);
-  font-family: var(--primary-font);
-  line-height: 1.6;
-}
-/* Navigation */
-header {
-  background: var(--bg-color);
-  position: fixed;
-  width: 100%;
-  top: 0;
-  z-index: 1000;
-  transition: background-color 0.3s, box-shadow 0.3s;
-}
-nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 2rem;
-}
-nav .logo {
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: var(--accent-purple);
-}
-nav ul {
-  list-style: none;
-  display: flex;
-}
-nav ul li {
-  margin-left: 2rem;
-}
-nav ul li a {
-  color: var(--text-color);
-  text-decoration: none;
-  font-weight: 300;
-  transition: color 0.3s ease;
-}
-nav ul li a:hover {
-  color: var(--accent-pink);
-}
-/* Sticky nav styles */
-header.scrolled {
-  background-color: rgba(0, 0, 0, 0.9);
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-/* Home Section */
-#home {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  text-align: center;
-  padding: 0 2rem;
-  background-size: cover;
-  background-position: center;
-}
-
-#home .hero-content{
-  background: url('hero-background.jpg') no-repeat center center/cover;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-#home h1 {
-  font-size: 3rem;
-  font-weight: bold;
-  margin-bottom: 1rem;
-  color: var(--text-color);
-}
-#home p {
-  font-size: 1.2rem;
-  margin-bottom: 2rem;
-  color: var(--text-color);
-}
-.cta-btn {
-  background-color: var(--accent-pink);
-  color: var(--text-color);
-  padding: 0.75rem 1.5rem;
-  border: none;
-  border-radius: 5px;
-  font-size: 1.1rem;
-  cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-}
-.cta-btn:hover {
-  background-color: var(--accent-purple);
-  transform: translateY(-2px);
-}
-/* About Section */
-#about {
-  padding: 4rem 2rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-}
-#about .about-content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  max-width: 800px;
-  margin-top: 2rem;
-}
-#about img {
-  width: 250px;
-  height: 250px;
-  border-radius: 50%;
-  object-fit: cover;
-  margin-bottom: 2rem;
-}
-#about h2 {
-  font-size: 2rem;
-  margin-bottom: 1rem;
-}
-#about p {
-  font-size: 1.1rem;
-  color: #ccc;
-}
-/* Services Section */
-#services {
-  padding: 4rem 2rem;
-  text-align: center;
-}
-#services h2 {
-  font-size: 2rem;
-  margin-bottom: 2rem;
-}
-.services-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 2rem;
-  margin-top: 2rem;
-}
-.service-card {
-  background: #111;
-  padding: 2rem;
-  border-radius: 10px;
-  text-align: left;
-  transition: background-color 0.3s ease, transform 0.3s ease;
-}
-.service-card:hover {
-  background: #1a1a1a;
-  transform: translateY(-5px);
-}
-.service-card h3 {
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
-  color: var(--accent-pink);
-}
-.service-card p {
-  font-size: 1.1rem;
-  color: #ccc;
-  margin-bottom: 0;
-}
-/* Work Samples Section */
-#work {
-  padding: 4rem 2rem;
-  text-align: center;
-  background-color: var(--bg-color);
-}
-#work h2 {
-  font-size: 2rem;
-  margin-bottom: 2rem;
-}
-.work-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
-  margin-top: 2rem;
-}
-.work-card {
-  background: #111;
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
-}
-.work-card:hover {
-  transform: translateY(-5px);
-}
-.work-card img {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-}
-.work-card-content {
-  padding: 1.5rem;
-}
-.work-card h3 {
-  font-size: 1.2rem;
-  margin-bottom: 0.5rem;
-  color: var(--accent-pink);
-}
-.work-card p {
-  font-size: 1rem;
-  color: #ccc;
-}
-/* Resume Section */
-#resume {
-  padding: 4rem 2rem;
-  text-align: center;
-}
-#resume h2 {
-  font-size: 2rem;
-  margin-bottom: 2rem;
-}
-.resume-content {
-  max-width: 800px;
-  margin: 0 auto;
-  text-align: left;
-}
-.resume-content h3 {
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
-  color: var(--accent-pink);
-}
-.resume-content p {
-  font-size: 1.1rem;
-  color: #ccc;
-  margin-bottom: 1.5rem;
-}
-.resume-content strong {
-  color: var(--text-color);
-}
-/* Contact Section */
-#contact {
-  padding: 4rem 2rem;
-  text-align: center;
-  background-color: var(--bg-color);
-}
-#contact h2 {
-  font-size: 2rem;
-  margin-bottom: 2rem;
-}
-.contact-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  max-width: 600px;
-  margin: 0 auto;
-}
-.contact-form {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-.contact-form input,
-.contact-form textarea {
-  padding: 0.75rem;
-  border: 1px solid #444;
-  border-radius: 5px;
-  font-size: 1rem;
-  background: #111;
-  color: #eee;
-}
-.contact-form textarea {
-  resize: vertical;
-}
-.contact-form input[type="submit"] {
-  background-color: var(--accent-pink);
-  color: var(--text-color);
-  border: none;
-  cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-}
-.contact-form input[type="submit"]:hover {
-  background-color: var(--accent-purple);
-  transform: translateY(-2px);
-}
-/* Footer */
-footer {
-  text-align: center;
-  padding: 2rem;
-  background: var(--bg-color);
-  border-top: 1px solid #333;
-  font-size: 0.9rem;
-  color: #888;
-}
-/* Animation Styles */
-.animate-on-scroll {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-}
-.animate-on-scroll.animate {
-  opacity: 1;
-  transform: translateY(0);
-}
-/* Pulse Animation for CTA Button */
-@keyframes pulse {
-  0% {
-    transform: scale(1);
-    box-shadow: 0 0 0 0 rgba(216, 167, 177, 0.4);
+// Wait for the DOM to fully load
+document.addEventListener('DOMContentLoaded', function() {
+  // Update the website name in any remaining places
+  document.title = 'Natalia Barros Portfolio';
+  const logoElements = document.querySelectorAll('.logo');
+  logoElements.forEach(el => {
+    el.textContent = 'Natalia Barros';
+  });
+  
+  // Update footer copyright
+  const footerCopyright = document.querySelector('footer p');
+  if (footerCopyright) {
+    footerCopyright.textContent = '© 2025 Natalia Barros. All rights reserved.';
   }
-  70% {
-    transform: scale(1.05);
-    box-shadow: 0 0 0 10px rgba(216, 167, 177, 0);
-  }
-  100% {
-    transform: scale(1);
-    box-shadow: 0 0 0 0 rgba(216, 167, 177, 0.4);
-  }
-}
-.pulse {
-  animation: pulse 1s cubic-bezier(0.4, 0, 0.6, 1);
-}
-/* Floating Animation for Work Cards */
-@keyframes float {
-  0% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-5px);
-  }
-  100% {
-    transform: translateY(0);
-  }
-}
-.work-card {
-  animation: float 4s ease-in-out infinite;
-}
 
-/* Estilos para la sección de servicios expandibles */
-.service-card {
-    cursor: pointer; /* Indica que el elemento es interactivo */
-    transition: transform 0.3s ease; /* Transición suave para el efecto de escala */
-    position: relative; /* Necesario para posicionar el contenido expandido */
-    overflow: hidden;
-}
+  // Scroll animation function
+  const animateOnScroll = function() {
+    const elements = document.querySelectorAll('.animate-on-scroll');
+    
+    elements.forEach(element => {
+      const elementPosition = element.getBoundingClientRect().top;
+      const windowHeight = window.innerHeight;
+      
+      if (elementPosition < windowHeight - 100) {
+        element.classList.add('animate');
+      }
+    });
+  };
 
-.service-card:hover {
-    transform: scale(1.05); /* Aumenta el tamaño al pasar el mouse */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-}
+  // Run animation check on page load
+  setTimeout(animateOnScroll, 200);
+  
+  // Run animation check on scroll
+  window.addEventListener('scroll', animateOnScroll);
 
-.service-card img {
-    display: none; /* Oculta la imagen por defecto */
-    margin-top: 10px;
-    max-width: 100%; /* Asegura que la imagen no se desborde del contenedor */
-    height: auto;
-    border-radius: 8px;
-}
+  // Navigation scroll effect
+  const header = document.querySelector('header');
+  
+  window.addEventListener('scroll', function() {
+    if (window.scrollY > 50) {
+      header.classList.add('scrolled');
+    } else {
+      header.classList.remove('scrolled');
+    }
+  });
 
-.service-card.expanded img {
-    display: block; /* Muestra la imagen cuando la tarjeta está expandida */
-}
+  // Smooth scrolling for navigation links
+  document.querySelectorAll('nav a').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault();
+      
+      const targetId = this.getAttribute('href');
+      const targetElement = document.querySelector(targetId);
+      
+      window.scrollTo({
+        top: targetElement.offsetTop - 70,
+        behavior: 'smooth'
+      });
+    });
+  });
 
-.service-card p {
-    margin-bottom: 1rem;
+  // Enhance work samples section with animation and interaction
+  const workCards = document.querySelectorAll('.work-card');
+  
+  workCards.forEach((card, index) => {
+    // Add a subtle animation delay for staggered reveal
+    card.style.animationDelay = `${index * 0.2}s`;
+    
+    // Add interaction effects
+    card.addEventListener('mouseenter', function() {
+      this.style.transform = 'translateY(-8px)';
+      this.style.boxShadow = '0 12px 24px rgba(216, 167, 177, 0.25)';
+      
+      // Find the h3 element and add special animation
+      const heading = this.querySelector('h3');
+      if (heading) {
+        heading.style.color = '#D8A7B1';
+      }
+    });
+    
+    card.addEventListener('mouseleave', function() {
+      this.style.transform = '';
+      this.style.boxShadow = '';
+      
+      // Reset the heading styles
+      const heading = this.querySelector('h3');
+      if (heading) {
+        heading.style.color = '';
+      }
+    });
+  });
+
+  // Replace contact form with personal information
+  const contactSection = document.querySelector('#contact');
+  if (contactSection) {
+    const contactForm = contactSection.querySelector('.contact-form');
+    
+    if (contactForm) {
+      // Create new contact info element
+      const contactInfo = document.createElement('div');
+      contactInfo.className = 'contact-info';
+      
+      // Add contact information
+      contactInfo.innerHTML = `
+        <div class="contact-card animate-on-scroll">
+          <h3>Natalia Barros Ortiz</h3>
+          <p><strong>Location:</strong> Barranquilla, Atlántico, Colombia</p>
+          <p><strong>Phone:</strong> <a href="tel:+573235437360">+57 3235437360</a></p>
+          <p><strong>Email:</strong> <a href="mailto:nataliabarros2002@gmail.com">nataliabarros2002@gmail.com</a></p>
+          <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/natalia-barros-ortiz-a36386302?trk=contact-info" target="_blank">Natalia Barros Ortiz</a></p>
+        </div>
+      `;
+      
+      // Replace the form with the contact info
+      contactForm.parentNode.replaceChild(contactInfo, contactForm);
+
+      // Initialize animation for the contact card
+      setTimeout(function() {
+        const contactCard = document.querySelector('.contact-card');
+        if (contactCard) {
+          if (contactCard.getBoundingClientRect().top < window.innerHeight) {
+            contactCard.classList.add('animate');
+          }
+        }
+      }, 300);
+    }
+  }
+
+  // Add a typing effect to the hero heading
+  const heroHeading = document.querySelector('#home h1');
+  if (heroHeading) {
+    const originalText = heroHeading.textContent;
+    heroHeading.textContent = '';
+    
+    let i = 0;
+    const typeWriter = function() {
+      if (i < originalText.length) {
+        heroHeading.textContent += originalText.charAt(i);
+        i++;
+        setTimeout(typeWriter, 50);
+      }
+    };
+    
+    // Start the typing effect with a delay
+    setTimeout(typeWriter, 500);
+  }
+
+  // Add pulse animation to CTA button
+  const ctaButton = document.querySelector('.cta-btn');
+  if (ctaButton) {
+    // Add pulse class periodically
+    setInterval(() => {
+      ctaButton.classList.add('pulse');
+      
+      // Remove the class after animation completes
+      setTimeout(() => {
+        ctaButton.classList.remove('pulse');
+      }, 1000);
+    }, 3000);
+  }
+
+  // Create a subtle floating animation for work cards
+  workCards.forEach((card, index) => {
+    // Set different animation delays for each card
+    const delay = index * 1.5;
+    card.style.animation = `float 4s ease-in-out ${delay}s infinite`;
+  });
+
+  // Add floating animation keyframes
+  const style = document.createElement('style');
+  style.textContent = `
+    @keyframes float {
+      0% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-5px);
+      }
+      100% {
+        transform: translateY(0);
+      }
+    }
+
+    .pulse {
+      animation: pulse 1s cubic-bezier(0.4, 0, 0.6, 1);
+    }
+    
+    /* Add hover effects for links */
+    a:hover {
+      transition: color 0.3s;
+    }
+    
+    /* Enhancement for work cards */
+    .work-card {
+      cursor: pointer;
+    }
+  `;
+  
+  document.head.appendChild(style);
+});
+
     display: flex;
     align-items: center; /* Centra verticalmente el texto */
 }
