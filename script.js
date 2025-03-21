@@ -22,14 +22,41 @@ document.addEventListener('DOMContentLoaded', function() {
       
       if (elementPosition < windowHeight - 100) {
         element.classList.add('animate');
+      }// Wait for the DOM to fully load
+document.addEventListener('DOMContentLoaded', function() {
+  // Update the website name in any remaining places
+  document.title = 'Natalia Barros Portfolio';
+  const logoElements = document.querySelectorAll('.logo');
+  logoElements.forEach(el => {
+    el.textContent = 'Natalia Barros';
+  });
+  
+  // Update footer copyright
+  const footerCopyright = document.querySelector('footer p');
+  if (footerCopyright) {
+    footerCopyright.textContent = '© 2025 Natalia Barros. All rights reserved.';
+  }
+
+  // Scroll animation function
+  const animateOnScroll = function() {
+    const elements = document.querySelectorAll('.animate-on-scroll');
+    
+    elements.forEach(element => {
+      const elementPosition = element.getBoundingClientRect().top;
+      const windowHeight = window.innerHeight;
+      
+      if (elementPosition < windowHeight - 100) {
+        element.classList.add('animate');
       }
     });
   };
+
   // Run animation check on page load
   setTimeout(animateOnScroll, 200);
   
   // Run animation check on scroll
   window.addEventListener('scroll', animateOnScroll);
+
   // Navigation scroll effect
   const header = document.querySelector('header');
   
@@ -40,29 +67,96 @@ document.addEventListener('DOMContentLoaded', function() {
       header.classList.remove('scrolled');
     }
   });
+
   // Smooth scrolling for navigation links
   document.querySelectorAll('nav a').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
       e.preventDefault();
       
-      const targetId = this.getAttribute('href').substring(1);
-      const targetElement = document.getElementById(targetId);
+      const targetId = this.getAttribute('href');
+      const targetElement = document.querySelector(targetId);
       
-      if (targetElement) {
-        window.scrollTo({
-          top: targetElement.offsetTop,
-          behavior: 'smooth'
-        });
+      window.scrollTo({
+        top: targetElement.offsetTop - 70,
+        behavior: 'smooth'
+      });
+    });
+  });
+
+  // Enhance work samples section with animation and interaction
+  const workCards = document.querySelectorAll('.work-card');
+  
+  workCards.forEach((card, index) => {
+    // Add a subtle animation delay for staggered reveal
+    card.style.animationDelay = `${index * 0.2}s`;
+    
+    // Add interaction effects
+    card.addEventListener('mouseenter', function() {
+      this.style.transform = 'translateY(-8px)';
+      this.style.boxShadow = '0 12px 24px rgba(216, 167, 177, 0.25)';
+      
+      // Find the h3 element and add special animation
+      const heading = this.querySelector('h3');
+      if (heading) {
+        heading.style.color = '#D8A7B1';
+      }
+    });
+    
+    card.addEventListener('mouseleave', function() {
+      this.style.transform = '';
+      this.style.boxShadow = '';
+      
+      // Reset the heading styles
+      const heading = this.querySelector('h3');
+      if (heading) {
+        heading.style.color = '';
       }
     });
   });
-  // Typing effect for the home section
+
+  // Replace contact form with personal information
+  const contactSection = document.querySelector('#contact');
+  if (contactSection) {
+    const contactForm = contactSection.querySelector('.contact-form');
+    
+    if (contactForm) {
+      // Create new contact info element
+      const contactInfo = document.createElement('div');
+      contactInfo.className = 'contact-info';
+      
+      // Add contact information
+      contactInfo.innerHTML = `
+        <div class="contact-card animate-on-scroll">
+          <h3>Natalia Barros Ortiz</h3>
+          <p><strong>Location:</strong> Barranquilla, Atlántico, Colombia</p>
+          <p><strong>Phone:</strong> <a href="tel:+573235437360">+57 3235437360</a></p>
+          <p><strong>Email:</strong> <a href="mailto:nataliabarros2002@gmail.com">nataliabarros2002@gmail.com</a></p>
+          <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/natalia-barros-ortiz-a36386302?trk=contact-info" target="_blank">Natalia Barros Ortiz</a></p>
+        </div>
+      `;
+      
+      // Replace the form with the contact info
+      contactForm.parentNode.replaceChild(contactInfo, contactForm);
+
+      // Initialize animation for the contact card
+      setTimeout(function() {
+        const contactCard = document.querySelector('.contact-card');
+        if (contactCard) {
+          if (contactCard.getBoundingClientRect().top < window.innerHeight) {
+            contactCard.classList.add('animate');
+          }
+        }
+      }, 300);
+    }
+  }
+
+  // Add a typing effect to the hero heading
   const heroHeading = document.querySelector('#home h1');
   if (heroHeading) {
     const originalText = heroHeading.textContent;
     heroHeading.textContent = '';
-    let i = 0;
     
+    let i = 0;
     const typeWriter = function() {
       if (i < originalText.length) {
         heroHeading.textContent += originalText.charAt(i);
@@ -74,6 +168,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Start the typing effect with a delay
     setTimeout(typeWriter, 500);
   }
+
   // Add pulse animation to CTA button
   const ctaButton = document.querySelector('.cta-btn');
   if (ctaButton) {
@@ -87,13 +182,14 @@ document.addEventListener('DOMContentLoaded', function() {
       }, 1000);
     }, 3000);
   }
+
   // Create a subtle floating animation for work cards
-  const workCards = document.querySelectorAll('.work-card');
   workCards.forEach((card, index) => {
     // Set different animation delays for each card
     const delay = index * 1.5;
     card.style.animation = `float 4s ease-in-out ${delay}s infinite`;
   });
+
   // Add floating animation keyframes
   const style = document.createElement('style');
   style.textContent = `
@@ -108,35 +204,22 @@ document.addEventListener('DOMContentLoaded', function() {
         transform: translateY(0);
       }
     }
+
     .pulse {
       animation: pulse 1s cubic-bezier(0.4, 0, 0.6, 1);
     }
     
+    /* Add hover effects for links */
+    a:hover {
+      transition: color 0.3s;
+    }
+    
+    /* Enhancement for work cards */
+    .work-card {
+      cursor: pointer;
+    }
   `;
+  
   document.head.appendChild(style);
-  
-    // Function to toggle the display of the service image and description
-    window.toggleService = function(card) {
-        card.classList.toggle('expanded');
-    };
-  
-  // Replace the contact form with contact information
-  const contactForm = document.querySelector('.contact-form');
-  if (contactForm) {
-    const contactInfo = document.createElement('div');
-    contactInfo.innerHTML = `
-      <div class="contact-card">
-        <h3>Get in Touch</h3>
-        <p>Email: natalia.barros@example.com</p>
-        <p>Phone: +123 456 7890</p>
-        <p><a href="https://www.linkedin.com/in/nataliabarros" target="_blank">LinkedIn Profile</a></p>
-      </div>
-    `;
-    contactForm.parentNode.replaceChild(contactInfo, contactForm);
-  }
 });
 
-  `;
-  
-  document.head.appendChild(style);
-});
