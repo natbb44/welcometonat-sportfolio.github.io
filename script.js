@@ -188,7 +188,7 @@ const homeSection = document.getElementById('home');
 if (homeSection) {
     // Check if the background image is loaded
     const img = new Image();
-    img.src = 'background';
+    img.src = 'background.jpg';
     img.onerror = function() {
         // If image fails to load, apply a gradient background instead
         homeSection.style.background = 'linear-gradient(135deg, #1a1a1a 0%, #111 100%)';
